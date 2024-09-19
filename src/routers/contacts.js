@@ -12,8 +12,8 @@ import { createContactSchema, updateContactSchema } from "../validation/contacts
 
 export const contactRouter = Router();
 
-contactRouter.get('/contacts', validateBody(createContactSchema), ctrlWrapper(getAllContactsController));
-contactRouter.get('/contacts/:contactId', isValidId, validateBody(createContactSchema), ctrlWrapper(getContactByIdController));
-contactRouter.post('/contacts', validateBody(updateContactSchema), ctrlWrapper(createContactController));
+contactRouter.get('/contacts', ctrlWrapper(getAllContactsController));
+contactRouter.get('/contacts/:contactId', isValidId, ctrlWrapper(getContactByIdController));
+contactRouter.post('/contacts', validateBody(createContactSchema), ctrlWrapper(createContactController));
 contactRouter.patch('/contacts/:contactId', isValidId, validateBody(updateContactSchema), ctrlWrapper(patchContactController));
-contactRouter.delete('/contacts/:contactId', isValidId, validateBody(updateContactSchema), ctrlWrapper(deleteContactController));
+contactRouter.delete('/contacts/:contactId', isValidId, ctrlWrapper(deleteContactController));
